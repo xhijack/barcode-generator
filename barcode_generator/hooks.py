@@ -64,6 +64,12 @@ app_license = "mit"
 # 	"filters": "barcode_generator.utils.jinja_filters"
 # }
 
+# add methods and filters to jinja environment
+jinja = {
+	"methods": "barcode_generator.service.generate_barcode",
+	# "filters": "textile2.utils.jinja_filters"
+}
+
 # Installation
 # ------------
 
