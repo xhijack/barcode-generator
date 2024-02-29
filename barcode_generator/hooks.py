@@ -6,6 +6,13 @@ app_email = "ramdani@sopwer.net"
 app_license = "mit"
 # required_apps = []
 
+fixtures = [
+  {"dt": "Print Format", "filters": [
+    ["name", "in", {
+      "PR Barcode Sopwer"
+		}]
+  ]}
+]
 # Includes in <head>
 # ------------------
 
@@ -96,8 +103,7 @@ jinja = {
 # Name of the app being uninstalled is passed as an argument
 
 # before_app_uninstall = "barcode_generator.utils.before_app_uninstall"
-# after_app_uninstall = "barcode_generator.utils.after_app_uninstall"
-
+# after_app_uninstall = "barcode_generator.utils.after_app_uninstall
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config

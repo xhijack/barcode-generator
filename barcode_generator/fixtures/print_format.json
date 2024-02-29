@@ -1,0 +1,33 @@
+[
+ {
+  "absolute_value": 0,
+  "align_labels_right": 0,
+  "css": "/* sesuaikan page dengan size barcode */\n/* page only working for non pdf print */\n@page {\n  size: 50mm 22mm;\n  margin: 0!important;\n  padding: 0!important;\n}\n\nbody {\n  width: 100%;\n  margin: 0;\n  padding: 0;\n  font-family: Arial, sans-serif;\n}\n\n.cont {\n  width: 100%;\n  height: 22mm;\n}\n\n.print-format {\n    padding: 0!important;\n    margin:0!important;\n}",
+  "custom_format": 1,
+  "default_print_language": "en",
+  "disabled": 0,
+  "doc_type": "Purchase Receipt",
+  "docstatus": 0,
+  "doctype": "Print Format",
+  "font": null,
+  "font_size": 14,
+  "format_data": null,
+  "html": "<style>\n    .print-format {\n    font-family: 'Open Sans', sans-serif;\n        margin-left:0mm;\n        margin-top:0mm;\n        margin-right:0mm;\n        margin-bottom:0mm;\n}\n</style>\n<div class=\"cont\">\n    <img src=\"{{generate_barcode(doc.name)}}\" alt=\"\" width=\"100%\">\n</div>",
+  "line_breaks": 0,
+  "margin_bottom": 15.0,
+  "margin_left": 15.0,
+  "margin_right": 15.0,
+  "margin_top": 15.0,
+  "modified": "2024-02-29 22:46:44.040344",
+  "module": "Barcode Generator",
+  "name": "PR Barcode Sopwer",
+  "page_number": "Hide",
+  "print_format_builder": 0,
+  "print_format_builder_beta": 0,
+  "print_format_type": "Jinja",
+  "raw_commands": null,
+  "raw_printing": 0,
+  "show_section_headings": 0,
+  "standard": "No"
+ }
+]
