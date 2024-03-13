@@ -9,7 +9,8 @@ app_license = "mit"
 fixtures = [
   {"dt": "Print Format", "filters": [
     ["name", "in", {
-      "PR Barcode Sopwer"
+      "PR Barcode Sopwer",
+      "Item Barcode Sopwer"
 		}]
   ]}
 ]
