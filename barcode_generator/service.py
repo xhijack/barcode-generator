@@ -23,4 +23,5 @@ def generate_qr_code(item_code):
     img = qrcode.make(item_code)
     filename = hashlib.md5(item_code.encode()).hexdigest()
     img.save("{}/public/files/barcode/{}.png".format(frappe.local.site,filename))
-    return """<img src="/files/barcode/{}.png" alt="barcode" style="width:100%;height:100%;">""".format(filename)
+    return "{}/public/files/barcode/{}.png".format(frappe.local.site,filename)
+    # return """<img src="/files/barcode/{}.png" alt="barcode" style="width:100%;height:100%;">""".format(filename)
