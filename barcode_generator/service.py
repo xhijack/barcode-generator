@@ -8,7 +8,7 @@ import qrcode
 def generate_barcode(item_code, barcode_type="Code128", width=None, height=None, scale=None):
     # Write to a file-like object:
     # Or to an actual file:
-    from barcode import EAN13, Code128
+    from barcode import Code128
     from barcode.writer import SVGWriter
     filename = hashlib.md5(item_code.encode()).hexdigest()
     if barcode_type == "Code128":
