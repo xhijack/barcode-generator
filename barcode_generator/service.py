@@ -20,7 +20,18 @@ def generate_barcode(item_code, barcode_type="Code128", width=None, height=None,
         raise Exception("Barcode type not supported")
 
 def generate_qr_code(item_code):
-    img = qrcode.make(item_code)
+    qr = qrcode.QRCode(
+        version=1,  # Versi QR Code (1-40), semakin besar semakin besar ukuran QR Code
+        error_correction=qrcode.constants.ERROR_CORRECT_L,  # Tingkat koreksi kesalahan
+        box_size=10,  # Ukuran setiap "box" (piksel) dalam QR Code
+        border=1,  # Ukuran margin (border) dalam "box" (piksel)
+    )
+
+    qr.add_data(item_code)
+    qr.make(fit=True)
+
+    img = qr.make_image(fill='black', back_color='white')
+
     filename = hashlib.md5(item_code.encode()).hexdigest()
     img.save("{}/public/files/barcode/{}.png".format(frappe.local.site,filename))
     return "/files/barcode/{}.png".format(filename)
