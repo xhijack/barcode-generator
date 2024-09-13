@@ -74,7 +74,11 @@ fixtures = [
 
 # add methods and filters to jinja environment
 jinja = {
-	"methods": ["barcode_generator.service.generate_barcode","barcode_generator.service.generate_qr_code"]
+	"methods": [
+        "barcode_generator.service.generate_barcode","barcode_generator.service.generate_qr_code",
+        "barcode_generator.service.generate_barcode","barcode_generator.service.generate_barcode"
+
+        ]
 	# "filters": "textile2.utils.jinja_filters"
 }
 
