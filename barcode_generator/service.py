@@ -5,15 +5,19 @@ import qrcode
 
 
 @frappe.whitelist(allow_guest=True)
-def generate_barcode(item_code, barcode_type="Code128", width=None, height=None, scale=None):
+def generate_barcode(item_code, barcode_type="Code128", width=0.4, height=None, scale=None):
     # Write to a file-like object:
     # Or to an actual file:
     from barcode import Code128
     from barcode.writer import SVGWriter
     filename = hashlib.md5(item_code.encode()).hexdigest()
     if barcode_type == "Code128":
+        options = {
+            'module_width': width,  # Lebar setiap modul (garis)
+            'quiet_zone': 10       # Jarak kosong di sekitar barcode
+        }
         with open("{}/public/files/barcode/{}.svg".format(frappe.local.site,filename), "wb") as f:
-            Code128(str(item_code), writer=SVGWriter()).write(f)
+            Code128(str(item_code), writer=SVGWriter()).write(f, options)
             # return """<img src="http://localhost:8006/files/barcode/{}.svg" alt="barcode" style="width:100%;height:100%;">""".format(filename)
             return "/files/barcode/{}.svg".format(filename)
     else:
