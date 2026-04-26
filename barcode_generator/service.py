@@ -13,7 +13,7 @@ def generate_barcode(item_code, barcode_type="Code128", width=0.4, height=None, 
     filename = hashlib.md5(item_code.encode()).hexdigest()
     if barcode_type == "Code128":
         options = {
-            'module_width': width or 2,  # Lebar setiap modul (garis)
+            'module_width': width or 4,  # Lebar setiap modul (garis)
             'module_height': height,  # Tinggi setiap modul (garis)
             'quiet_zone': quiet_zone       # Jarak kosong di sekitar barcode
         }
@@ -23,7 +23,7 @@ def generate_barcode(item_code, barcode_type="Code128", width=0.4, height=None, 
             return "/files/barcode/{}.svg".format(filename)
     elif barcode_type == "Code39":
         options = {
-            'module_width': width or 2,  # Lebar setiap modul (garis)
+            'module_width': width or 4,  # Lebar setiap modul (garis)
             'module_height': height or 2,  # Tinggi setiap modul (garis)
             'quiet_zone': quiet_zone       # Jarak kosong di sekitar barcode
         }
