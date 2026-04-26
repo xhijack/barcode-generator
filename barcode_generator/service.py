@@ -5,7 +5,7 @@ import qrcode
 
 
 @frappe.whitelist(allow_guest=True)
-def generate_barcode(item_code, barcode_type="Code128", width=0.4, height=None, scale=None):
+def generate_barcode(item_code, barcode_type="Code128", width=0.4, height=None, quiet_zone=10):
     # Write to a file-like object:
     # Or to an actual file:
     from barcode import Code128, Code39
@@ -13,8 +13,9 @@ def generate_barcode(item_code, barcode_type="Code128", width=0.4, height=None, 
     filename = hashlib.md5(item_code.encode()).hexdigest()
     if barcode_type == "Code128":
         options = {
-            'module_width': width,  # Lebar setiap modul (garis)
-            'quiet_zone': 10       # Jarak kosong di sekitar barcode
+            'module_width': width or 2,  # Lebar setiap modul (garis)
+            'module_height': height,  # Tinggi setiap modul (garis)
+            'quiet_zone': quiet_zone       # Jarak kosong di sekitar barcode
         }
         with open("{}/public/files/barcode/{}.svg".format(frappe.local.site,filename), "wb") as f:
             Code128(str(item_code), writer=SVGWriter()).write(f, options)
@@ -22,8 +23,9 @@ def generate_barcode(item_code, barcode_type="Code128", width=0.4, height=None, 
             return "/files/barcode/{}.svg".format(filename)
     elif barcode_type == "Code39":
         options = {
-            'module_width': width,  # Lebar setiap modul (garis)
-            'quiet_zone': 10       # Jarak kosong di sekitar barcode
+            'module_width': width or 2,  # Lebar setiap modul (garis)
+            'module_height': height or 2,  # Tinggi setiap modul (garis)
+            'quiet_zone': quiet_zone       # Jarak kosong di sekitar barcode
         }
         with open("{}/public/files/barcode/{}.svg".format(frappe.local.site,filename), "wb") as f:
             Code39(str(item_code), writer=SVGWriter()).write(f, options)
